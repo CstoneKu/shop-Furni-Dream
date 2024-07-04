@@ -1,11 +1,11 @@
 name: Docker Image CI
 
-# "master" 브랜치에 다음과 같은 이벤트가 발생 하면 트리거가 된다
+# "CI_CD" 브랜치에 다음과 같은 이벤트가 발생 하면 트리거가 된다
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "CI_CD" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "CI_CD" ]
 
 jobs:
   # 1. CI - 통합(build) 
@@ -13,11 +13,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    # 저장소의 커밋된 master브랜치 내려받기
+    # 저장소의 커밋된 CI_CD브랜치 내려받기
     - name : Checkout
       uses: actions/checkout@v3
       with:
-        ref: master
+        ref: CI_CD
     # JDK 17 설치 (원하는 버젼 및 배포판 (corretto | zulu | temurin 지정)
     - name: Set up JDK 17
       uses: actions/setup-java@v3
